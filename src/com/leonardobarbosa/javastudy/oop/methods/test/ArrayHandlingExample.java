@@ -1,11 +1,11 @@
 package com.leonardobarbosa.javastudy.oop.methods.test;
 
-import com.leonardobarbosa.javastudy.oop.methods.domain.ArrayMethods;
+import com.leonardobarbosa.javastudy.oop.methods.domain.ArrayHandling;
 
-public class ArrayMethodsExample {
+public class ArrayHandlingExample {
     public static void main(String[] args) {
 
-        ArrayMethods calculadora = new ArrayMethods();
+        ArrayHandling calculadora = new ArrayHandling();
         int[] numeros = {1, 2, 3, 4, 5, 6, 7, 8};
         calculadora.somaArray(numeros);
 
@@ -19,7 +19,7 @@ public class ArrayMethodsExample {
         ------------------------------------------------------------------------------
          */
 
-        ArrayMethods funcionario = new ArrayMethods();
+        ArrayHandling funcionario = new ArrayHandling();
 
         funcionario.name = "Light Yagami";
         funcionario.age = 19;

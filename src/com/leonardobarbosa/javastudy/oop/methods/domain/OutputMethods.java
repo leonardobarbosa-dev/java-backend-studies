@@ -1,6 +1,6 @@
 package com.leonardobarbosa.javastudy.oop.methods.domain;
 
-public class PrintMethods {
+public class OutputMethods {
 
     public String name = "Goku";
     public int age;
@@ -20,7 +20,7 @@ public class PrintMethods {
     (name, age and sex) vão ser do objeto especifico que for passado (girl or boy)
      */
 
-    public void printStudent(PrintMethods student) {
+    public void printStudent(OutputMethods student) {
         System.out.printf("\nEstudante: %s - Idade: %d - Sexo: %c"
                 ,  student.name, student.age, student.sex);
     }

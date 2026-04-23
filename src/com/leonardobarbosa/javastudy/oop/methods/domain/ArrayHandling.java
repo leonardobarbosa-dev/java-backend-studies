@@ -1,6 +1,6 @@
 package com.leonardobarbosa.javastudy.oop.methods.domain;
 
-public class ArrayMethods {
+public class ArrayHandling {
 
     /*
     É preciso criar o array antes e colocar a variavel dentro do metodo

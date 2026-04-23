@@ -1,25 +1,25 @@
 package com.leonardobarbosa.javastudy.oop.methods.test;
 
-import com.leonardobarbosa.javastudy.oop.methods.domain.PrintMethods;
+import com.leonardobarbosa.javastudy.oop.methods.domain.OutputMethods;
 
-public class PrintMethodsExample {
+public class OutputMethodsExample {
     public static void main(String[] args) {
 
-        PrintMethods girl = new PrintMethods();
+        OutputMethods girl = new OutputMethods();
         girl.name = "Sakura";
         girl.age = 19;
         girl.sex = 'F';
         girl.print();
 
 
-        PrintMethods boy = new PrintMethods();
+        OutputMethods boy = new OutputMethods();
         boy.name = "Kakashi";
         boy.age = 37;
         boy.sex = 'M';
         boy.print();
 
 
-        PrintMethods printer  = new PrintMethods();
+        OutputMethods printer  = new OutputMethods();
         printer.printStudent(girl);
         printer.printStudent(boy);
 

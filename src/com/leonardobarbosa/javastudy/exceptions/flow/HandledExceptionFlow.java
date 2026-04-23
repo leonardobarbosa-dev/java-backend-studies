@@ -1,6 +1,6 @@
 package com.leonardobarbosa.javastudy.exceptions.flow;
 
-public class HandledExceptionFlowExample {
+public class HandledExceptionFlow {
     public static void main(String[] args) {
 
         /*

@@ -1,6 +1,6 @@
 package com.leonardobarbosa.javastudy.exceptions.flow;
 
-public class UnhandledExceptionExample {
+public class UnhandledExceptionDemo {
     public static void main(String[] args) {
 
         /*
