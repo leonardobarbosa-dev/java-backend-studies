@@ -6,6 +6,10 @@ Review order:
    - StringBasicsExample
    - StringMethodsExample
    - StringBuilderExample
+   - StringFormattingExample
+   - StringConversionExample
+   - StringComparisonExample
+   - RegexBasicsExample
 
 2. Wrappers
 
