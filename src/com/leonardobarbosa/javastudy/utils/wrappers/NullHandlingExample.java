@@ -19,19 +19,19 @@ public class NullHandlingExample {
         }
 
         // BOM 2: operador ternário
-        int resultado = (valor != null) ? valor * 2 : 0;
-        System.out.println("Resultado: " + resultado);
+        int result = (valor != null) ? valor * 2 : 0;
+        System.out.println("Resultado: " + result);
 
         // BOM 3: Objects.requireNonNull → lança NPE com mensagem descritiva
         try {
-            Integer obrigatorio = Objects.requireNonNull(valor, "valor não pode ser null");
+            Integer required = Objects.requireNonNull(valor, "valor não pode ser null");
         } catch (NullPointerException e) {
             System.out.println("Erro: " + e.getMessage());
         }
 
         // Metodo recebendo wrapper → documente se aceita null
-        System.out.println(calcular(10));   // 20
-        System.out.println(calcular(null)); // 0 (null tratado)
+        System.out.println(calculate(10));   // 20
+        System.out.println(calculate(null)); // 0 (null tratado)
 
         // Comparação segura com null via Objects.equals
         Integer x = null;
@@ -46,7 +46,7 @@ public class NullHandlingExample {
     }
 
     // Boa prática: tratar null no próprio metodo
-    static int calcular(Integer valor) {
+    static int calculate(Integer valor) {
         if (valor == null) return 0;
         return valor * 2;
     }

@@ -18,11 +18,13 @@ Review order:
    - WrapperCachingExample
    - NullHandlingExample
 
-3. Numbers
+3. Numbers  
 
 4. Collections 
 
 5. Dates
+   - LegacyDateExample
+   - LegacyCalendarExample
 
 6. Random
 
