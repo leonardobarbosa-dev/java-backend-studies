@@ -1,2 +1,2 @@
-Hello World
-Mensagem append
+Testando BufferedWriter
+Segunda linha
