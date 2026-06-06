@@ -91,11 +91,25 @@ busca e manipulação de textos.
 
 ---
 
+### 6. IO (Input/Output)
+
+Exemplos utilizando a API clássica `java.io` para
+criação de arquivos e diretórios, leitura, escrita
+e uso de buffers para otimização de I/O.
+
+- FileExample
+- FileWriterExample
+- FileReaderExample
+- BufferedWriterExample
+- BufferedReaderExample
+- FileForDirectoryExample
+
+---
+
 ## Próximos Tópicos
 
 Os próximos conteúdos planejados para este módulo são:
 
-- IO
 - NIO
 - Serialization
 

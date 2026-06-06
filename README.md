@@ -39,6 +39,7 @@ src/
       │    ├── operations/
       │    └── bridge/
       ├── resourcebundle/
+      ├── io/
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.
