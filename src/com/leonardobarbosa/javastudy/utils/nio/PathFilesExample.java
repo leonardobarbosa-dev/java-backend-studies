@@ -16,7 +16,7 @@ public class PathFilesExample {
         - substitui a classe File
 
         Paths
-        - cria objetos Path
+        - cria objetos Path a partir de Strings
 
         Files
         - realiza operações no sistema de arquivos
