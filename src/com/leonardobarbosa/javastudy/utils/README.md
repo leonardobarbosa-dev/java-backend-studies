@@ -106,11 +106,25 @@ e uso de buffers para otimização de I/O.
 
 ---
 
+### 7. NIO (New Input/Output)
+
+Exemplos utilizando a API moderna `java.nio` para
+manipulação de arquivos, diretórios, caminhos,
+atributos e operações avançadas no sistema de arquivos.
+
+- PathFilesExample
+- PathManipulationExample
+- FileAttributesExample
+- DirectoryStreamExample
+- SimpleFileVisitorExample
+- PathMatcherExample
+- PathMatcherExercise
+- ZipOutputStreamExample
+
 ## Próximos Tópicos
 
 Os próximos conteúdos planejados para este módulo são:
 
-- NIO
 - Serialization
 
 Após a finalização do módulo `utils`, os estudos continuarão

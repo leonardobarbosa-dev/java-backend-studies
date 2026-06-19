@@ -40,6 +40,8 @@ src/
       │    └── bridge/
       ├── resourcebundle/
       ├── io/
+      ├── nio/
+      
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.
