@@ -41,7 +41,7 @@ src/
       ├── resourcebundle/
       ├── io/
       ├── nio/
-      
+      ├── serialization/
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.

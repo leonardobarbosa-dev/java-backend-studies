@@ -121,14 +121,15 @@ atributos e operações avançadas no sistema de arquivos.
 - PathMatcherExercise
 - ZipOutputStreamExample
 
-## Próximos Tópicos
+---
 
-Os próximos conteúdos planejados para este módulo são:
+### 8. Serialization
 
-- Serialization
+Exemplos utilizando a API de serialização do Java para
+converter objetos em bytes e reconstruí-los a partir de um arquivo.
 
-Após a finalização do módulo `utils`, os estudos continuarão
-com o módulo de `collections`.
+- StudentClass -> Student
+- SerializationExample
 
 ---
 
