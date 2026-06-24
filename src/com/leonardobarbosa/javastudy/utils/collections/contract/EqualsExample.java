@@ -1,7 +1,5 @@
 package com.leonardobarbosa.javastudy.utils.collections.contract;
 
-import java.util.Objects;
-
 class Product {
 
     private String code;
@@ -41,6 +39,16 @@ class Product {
             return false;
         Product product = (Product) obj;
         return code != null && code.equals(product.code);
+    }
+
+    /*
+    Contrato: se dois objetos são iguais por equals(), eles precisam
+    ter o mesmo hashCode(). Por isso usa o mesmo campo (code) que o
+    equals() usa -> os dois critérios ficam sempre consistentes
+     */
+    @Override
+    public int hashCode() {
+        return code == null ? 0 : this.code.hashCode();
     }
 }
 
