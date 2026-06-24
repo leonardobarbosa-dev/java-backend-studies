@@ -133,6 +133,19 @@ converter objetos em bytes e reconstruí-los a partir de um arquivo.
 
 ---
 
+### 9. Collections
+
+Exemplos utilizando o Collections Framework do Java, abordando o contrato
+equals/hashCode, complexidade de algoritmos (Big-O), e as principais
+implementações de List, Set, Map e Queue.
+
+- contract/
+  - EqualsExample -> Product
+  - HashCodeExample
+
+
+---
+
 ## Objetivo do Módulo
 
 Este módulo foi desenvolvido para consolidar o uso das principais
