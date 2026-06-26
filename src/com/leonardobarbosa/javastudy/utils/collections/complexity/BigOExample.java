@@ -58,7 +58,7 @@ public class BigOExample {
         start = System.nanoTime();
 
         long sum = 0;
-        for (int number : numbers) {    // acessa cada posição uma vez -> 100.000 operações
+        for (int number : numbers) {    // acessa cada posição uma vez -> 10.000 operações
             sum += number;
         }
 
@@ -77,10 +77,10 @@ public class BigOExample {
         }
         /*
         Na primeira volta i = 0
-        j percorre: numbers[0] + numbers[0] -> [1] -> [2]   -> 100.000 vezes
+        j percorre: numbers[0] + numbers[0] -> [1] -> [2]   -> 10.000 vezes
         depois i = 1    -> tudo novamente
 
-        Então   -> 100.000 x 100.000 = 10.000.000.000 (10 bilhões de operações)
+        Então   -> 10.000 x 10.000 = 100.000.000 (100 milhões de operações)
          */
         end = System.nanoTime();
         System.out.println("O(n²): " + timeMs(start, end) + " ms");
