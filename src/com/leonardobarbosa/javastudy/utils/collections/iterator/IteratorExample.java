@@ -6,10 +6,10 @@ import java.util.Iterator;
 import java.util.List;
 
 class Manga {
-    private Long code;
-    private String name;
-    private double price;
-    private int amount;
+    private final Long code;
+    private final String name;
+    private final double price;
+    private final int amount;
 
     public Manga(Long code, String name, double price, int amount) {
         this.code = code;
