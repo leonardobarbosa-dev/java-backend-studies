@@ -4,9 +4,9 @@ import java.util.*;
 
 class Manga implements Comparable<Manga> {
 
-    private final Long code;
-    private final String name;
-    private final double price;
+    private Long code;
+    private String name;
+    private double price;
 
     public Manga(Long code, String name, double price) {
         Objects.requireNonNull(code, "Code não pode ser nulo.");
