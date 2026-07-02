@@ -40,12 +40,12 @@ class Book implements Comparable<Book> {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Book book = (Book) obj;
-        return Objects.equals(code, book.code);
+        return code != null && code.equals(book.getCode());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(code);
+        return code == null ? 0 :  this.code.hashCode();
 
 
     }
