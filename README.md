@@ -42,6 +42,15 @@ src/
       ├── io/
       ├── nio/
       ├── serialization/
+      ├── collections/
+      │    ├── contract/
+      │    ├── complexity/
+      │    ├── list/
+      │    ├── iterator/
+      │    ├── set/
+      │    ├── map/
+      │    ├── queue/
+      ├── 
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.

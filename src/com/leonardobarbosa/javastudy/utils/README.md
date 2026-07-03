@@ -142,7 +142,24 @@ implementações de List, Set, Map e Queue.
 - contract/
   - EqualsExample -> Product
   - HashCodeExample
-
+- complexity/
+  - BigOExample
+- list/
+  - ListExample -> Product
+  - SortingListsExample -> Manga -> MangaComparator
+  - BinarySearchExample
+  - ListToArrayExample
+- iterator/
+  - IteratorExample -> Manga
+- set/
+  - HashSetExample -> Manga
+  - NavigableSetExample -> Book
+- map/
+  - HashMapExample -> Manga
+  - MapWithListExample -> Client -> Book
+  - NavigableMapExample -> Game
+- queue/
+  - QueueExample -> Manga
 
 ---
 
