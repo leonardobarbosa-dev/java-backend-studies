@@ -24,33 +24,38 @@ src/
  ├── fundamentals/
  ├── oop/
  ├── exceptions/
- └── utils/
-      ├── string/
-      │    └── regex/
-      ├── wrappers/
-      ├── date/
-      │    ├── legacy/
-      │    ├── localdate/
-      │    ├── localtime/
-      │    ├── datetime/
-      │    ├── zoned/
-      │    ├── instant/
-      │    ├── formatting/
-      │    ├── operations/
-      │    └── bridge/
-      ├── resourcebundle/
-      ├── io/
-      ├── nio/
-      ├── serialization/
-      ├── collections/
-      │    ├── contract/
-      │    ├── complexity/
-      │    ├── list/
-      │    ├── iterator/
-      │    ├── set/
-      │    ├── map/
-      │    ├── queue/
-      ├── 
+ ├── utils/
+ │     ├── string/
+ │     │    └── regex/
+ │     ├── wrappers/
+ │     ├── date/
+ │     │    ├── legacy/
+ │     │    ├── localdate/
+ │     │    ├── localtime/
+ │     │    ├── datetime/
+ │     │    ├── zoned/
+ │     │    ├── instant/
+ │     │    ├── formatting/
+ │     │    ├── operations/
+ │     │    └── bridge/
+ │     ├── resourcebundle/
+ │     ├── io/
+ │     ├── nio/
+ │     ├── serialization/
+ │     └── collections/
+ │          ├── contract/
+ │          ├── complexity/
+ │          ├── list/
+ │          ├── iterator/
+ │          ├── set/
+ │          ├── map/
+ │          └── queue/
+ ├── generics/
+ │    ├── intro/
+ │    ├── wildcard/
+ │    ├── classes/
+ │    └── methods/
+      
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.
