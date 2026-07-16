@@ -55,7 +55,11 @@ src/
  │    ├── wildcard/
  │    ├── classes/
  │    └── methods/
-      
+ ├── innerclasses/
+ │    ├── intro/
+ │    ├── local/
+ │    ├── anonymous/
+ │    └── staticnested/      
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.
