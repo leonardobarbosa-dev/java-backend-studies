@@ -60,6 +60,11 @@ src/
  │    ├── local/
  │    ├── anonymous/
  │    └── staticnested/      
+ ├── lambdas/
+ │    ├── behavior/        <- parametrizando comportamentos
+ │    ├── predicate/
+ │    ├── consumer/
+ │    └── function/
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.
