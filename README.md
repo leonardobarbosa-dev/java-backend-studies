@@ -65,6 +65,10 @@ src/
  │    ├── predicate/
  │    ├── consumer/
  │    └── function/
+ ├── methodreference/
+ │    ├── staticmethod/
+ │    ├── instancemethod/
+ │    └── constructor/
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.
