@@ -42,14 +42,15 @@ src/
  │     ├── io/
  │     ├── nio/
  │     ├── serialization/
- │     └── collections/
- │          ├── contract/
- │          ├── complexity/
- │          ├── list/
- │          ├── iterator/
- │          ├── set/
- │          ├── map/
- │          └── queue/
+ │     ├── collections/
+ │     │    ├── contract/
+ │     │    ├── complexity/
+ │     │    ├── list/
+ │     │    ├── iterator/
+ │     │    ├── set/
+ │     │    ├── map/
+ │     │    └── queue/
+ │     └── optional/
  ├── generics/
  │    ├── intro/
  │    ├── wildcard/

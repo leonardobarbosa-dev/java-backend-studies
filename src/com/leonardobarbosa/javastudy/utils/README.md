@@ -163,6 +163,16 @@ implementações de List, Set, Map e Queue.
 
 ---
 
+### 10. Optional
+
+Exemplos utilizando Optional<T> como retorno de método de busca, evitando
+null e a checagem manual (if != null), com transformação e tratamento
+explícito de ausência de valor.
+
+- OptionalExample -> Manga
+
+---
+
 ## Objetivo do Módulo
 
 Este módulo foi desenvolvido para consolidar o uso das principais
