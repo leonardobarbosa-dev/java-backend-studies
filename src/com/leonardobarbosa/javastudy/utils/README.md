@@ -173,6 +173,31 @@ explícito de ausência de valor.
 
 ---
 
+### 11. Streams
+Exemplos utilizando a API de Streams do Java, abordando o pipeline de
+processamento declarativo, transformação de dados aninhados, busca,
+redução, geração de streams e agrupamento/resumo estatístico com Collectors.
+
+- intro/
+  - StreamIntroExample -> Manga
+- flatmap/
+  - FlatMapExample -> Manga
+- matching/
+  - MatchingExample -> Manga
+- reduce/
+  - ReduceExample -> Manga
+- generating/
+  - GeneratingStreamsExample
+- collectors/
+  - summarizing/
+    - SummarizingExample -> Manga
+  - groupingby/
+    - GroupingByExample -> Manga -> Promotion
+- parallel/
+  - ParallelStreamsExample
+
+---
+
 ## Objetivo do Módulo
 
 Este módulo foi desenvolvido para consolidar o uso das principais

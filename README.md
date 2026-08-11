@@ -50,7 +50,17 @@ src/
  │     │    ├── set/
  │     │    ├── map/
  │     │    └── queue/
- │     └── optional/
+ │     ├── optional/
+ │     └── streams/
+ │          ├── intro/
+ │          ├── flatmap/
+ │          ├── matching/
+ │          ├── reduce/
+ │          ├── generating/
+ │          ├── collectors/
+ │          │    ├── summarizing/
+ │          │    └── groupingby/
+ │          └── parallel/
  ├── generics/
  │    ├── intro/
  │    ├── wildcard/
