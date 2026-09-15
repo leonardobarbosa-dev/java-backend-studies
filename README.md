@@ -80,6 +80,12 @@ src/
  │    ├── staticmethod/
  │    ├── instancemethod/
  │    └── constructor/
+ ├── threads/
+ │    ├── intro/
+ │    ├── states/
+ │    ├── priority/
+ │    ├── yieldjoin/
+ │    └── synchronization/
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.
