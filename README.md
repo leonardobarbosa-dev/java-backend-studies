@@ -51,16 +51,23 @@ src/
  │     │    ├── map/
  │     │    └── queue/
  │     ├── optional/
- │     └── streams/
- │          ├── intro/
- │          ├── flatmap/
- │          ├── matching/
- │          ├── reduce/
- │          ├── generating/
- │          ├── collectors/
- │          │    ├── summarizing/
- │          │    └── groupingby/
- │          └── parallel/
+ │     ├── streams/
+ │     │    ├── intro/
+ │     │    ├── flatmap/
+ │     │    ├── matching/
+ │     │    ├── reduce/
+ │     │    ├── generating/
+ │     │    ├── collectors/
+ │     │    │    ├── summarizing/
+ │     │    │    └── groupingby/
+ │     │    └── parallel/
+ │     └── concurrency/
+ │          ├── atomic/
+ │          ├── locks/
+ │          ├── concurrentcollections/
+ │          ├── queues/
+ │          ├── executors/
+ │          └── completablefuture/
  ├── generics/
  │    ├── intro/
  │    ├── wildcard/

@@ -198,6 +198,37 @@ redução, geração de streams e agrupamento/resumo estatístico com Collectors
 
 ---
 
+### 12. Concorrência
+Exemplos utilizando a API java.util.concurrent, abordando operações
+atômicas, locks explícitos, coleções e filas thread-safe, pools de
+threads gerenciados (Executors) e composição de tarefas assíncronas
+com CompletableFuture.
+
+- atomic/
+  - AtomicIntegerExample
+- locks/
+  - ReentrantLockExample
+  - ConditionExample -> Message
+  - ReentrantReadWriteLockExample -> Cache
+- concurrentcollections/
+  - CopyOnWriteArrayListExample
+- queues/
+  - ArrayBlockingQueueExample
+  - LinkedTransferQueueExample
+- executors/
+  - ThreadPoolExample
+  - ScheduledExecutorServiceExample
+  - CallableExample
+  - FutureExample
+- completablefuture/
+  - GetAndJoinExample
+  - CompletableFutureStreamsExample
+  - ThreadFactoryExample
+  - ChainingExample
+  - AllOfAnyOfExample
+
+---
+
 ## Objetivo do Módulo
 
 Este módulo foi desenvolvido para consolidar o uso das principais
