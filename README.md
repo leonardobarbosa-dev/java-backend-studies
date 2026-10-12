@@ -93,6 +93,14 @@ src/
  │    ├── priority/
  │    ├── yieldjoin/
  │    └── synchronization/
+ ├── patterns/
+ │   ├── builder/
+ │   ├── factory/
+ │   ├── singleton/
+ │   │   ├── eager/
+ │   │   ├── lazy/
+ │   │   └── enumeration/
+ │   └── dto/
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.
