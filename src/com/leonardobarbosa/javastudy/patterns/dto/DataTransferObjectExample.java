@@ -14,14 +14,14 @@ public class DataTransferObjectExample {
     public static void main(String[] args) {
 
         User user = new User(1, "Leonardo", "leonardo@email.com");
-        Adress adress = new Adress("Santa cruz", "PE");
+        Address address = new Address("Santa Cruz", "PE");
 
-        UserDto userDto = UserDtoMapper.toDto(user, adress);
+        UserDto userDto = UserDtoMapper.toDto(user, address);
 
         System.out.println("ID: " + userDto.id());
-        System.out.println("Name: " + userDto.name());
+        System.out.println("Nome: " + userDto.name());
         System.out.println("E-mail: " + userDto.email());
-        System.out.println("City: " + userDto.city());
-        System.out.println("State: " + userDto.state());
+        System.out.println("Cidade: " + userDto.city());
+        System.out.println("Estado: " + userDto.state());
     }
 }

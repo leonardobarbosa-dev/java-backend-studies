@@ -1,4 +1,4 @@
-## Lambdas
+# Lambdas
 
 Exemplos das principais interfaces funcionais do Java, abordando
 parametrização de comportamento e o uso de Predicate, Consumer e Function.

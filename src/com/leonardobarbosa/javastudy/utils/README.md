@@ -32,7 +32,7 @@ Exemplos relacionados à manipulação e operações utilizando Strings.
 Exemplos utilizando wrapper classes, autoboxing, unboxing e métodos utilitários.
 
 - WrapperBasicsExample
-- WrapperComparisonExample
+- WrapperComparisonsExample
 - WrapperMethodsExample
 - WrapperCachingExample
 - NullHandlingExample
@@ -146,7 +146,7 @@ implementações de List, Set, Map e Queue.
   - BigOExample
 - list/
   - ListExample -> Product
-  - SortingListsExample -> Manga -> MangaComparator
+  - SortingListExample -> Manga -> MangaComparator
   - BinarySearchExample
   - ListToArrayExample
 - iterator/

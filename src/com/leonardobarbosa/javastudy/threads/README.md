@@ -1,4 +1,4 @@
-## Threads
+# Threads
 
 Exemplos sobre programação concorrente em Java, abordando criação e
 ciclo de vida de threads, controle de execução (prioridade, sleep,

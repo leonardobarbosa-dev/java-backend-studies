@@ -1,13 +1,16 @@
 package com.leonardobarbosa.javastudy.patterns.dto;
 
-public class UserDtoMapper {
+public final class UserDtoMapper {
 
-    public static UserDto toDto(User user, Adress adress) {
+    private UserDtoMapper() {
+    }
+
+    public static UserDto toDto(User user, Address address) {
         return new UserDto(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
-                adress.getCity(),
-                adress.getState());
+                address.getCity(),
+                address.getState());
     }
 }

@@ -50,6 +50,6 @@ diferentes partes de uma aplicação, permitindo reunir informações
 provenientes de diferentes objetos.
 - User
 - Address
-- UserDTO
-- UserDTOMapper
+- UserDto
+- UserDtoMapper
 - DataTransferObjectExample

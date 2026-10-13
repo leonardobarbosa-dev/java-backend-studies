@@ -1,4 +1,4 @@
-## Generics
+# Generics
 
 Exemplos utilizando o sistema de tipos genéricos do Java, abordando
 segurança de tipo em tempo de compilação, wildcards e criação de

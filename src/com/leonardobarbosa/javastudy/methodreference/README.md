@@ -1,4 +1,4 @@
-## Method Reference
+# Method Reference
 
 Exemplos dos três tipos de referência a métodos do Java, mostrando
 a equivalência com lambdas e quando cada tipo é aplicável.

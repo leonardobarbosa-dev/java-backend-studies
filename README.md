@@ -21,86 +21,89 @@ com foco em aprendizado contínuo, prática e revisão futura.
 
 ```text
 src/
- ├── fundamentals/
- ├── oop/
- ├── exceptions/
- ├── utils/
- │     ├── string/
- │     │    └── regex/
- │     ├── wrappers/
- │     ├── date/
- │     │    ├── legacy/
- │     │    ├── localdate/
- │     │    ├── localtime/
- │     │    ├── datetime/
- │     │    ├── zoned/
- │     │    ├── instant/
- │     │    ├── formatting/
- │     │    ├── operations/
- │     │    └── bridge/
- │     ├── resourcebundle/
- │     ├── io/
- │     ├── nio/
- │     ├── serialization/
- │     ├── collections/
- │     │    ├── contract/
- │     │    ├── complexity/
- │     │    ├── list/
- │     │    ├── iterator/
- │     │    ├── set/
- │     │    ├── map/
- │     │    └── queue/
- │     ├── optional/
- │     ├── streams/
- │     │    ├── intro/
- │     │    ├── flatmap/
- │     │    ├── matching/
- │     │    ├── reduce/
- │     │    ├── generating/
- │     │    ├── collectors/
- │     │    │    ├── summarizing/
- │     │    │    └── groupingby/
- │     │    └── parallel/
- │     └── concurrency/
- │          ├── atomic/
- │          ├── locks/
- │          ├── concurrentcollections/
- │          ├── queues/
- │          ├── executors/
- │          └── completablefuture/
- ├── generics/
- │    ├── intro/
- │    ├── wildcard/
- │    ├── classes/
- │    └── methods/
- ├── innerclasses/
- │    ├── intro/
- │    ├── local/
- │    ├── anonymous/
- │    └── staticnested/      
- ├── lambdas/
- │    ├── behavior/        <- parametrizando comportamentos
- │    ├── predicate/
- │    ├── consumer/
- │    └── function/
- ├── methodreference/
- │    ├── staticmethod/
- │    ├── instancemethod/
- │    └── constructor/
- ├── threads/
- │    ├── intro/
- │    ├── states/
- │    ├── priority/
- │    ├── yieldjoin/
- │    └── synchronization/
- ├── patterns/
- │   ├── builder/
- │   ├── factory/
- │   ├── singleton/
- │   │   ├── eager/
- │   │   ├── lazy/
- │   │   └── enumeration/
- │   └── dto/
+ └── com/
+      └── leonardobarbosa/
+           └── javastudy/
+                ├── fundamentals/
+                ├── oop/
+                ├── exceptions/
+                ├── utils/
+                │     ├── string/
+                │     │    └── regex/
+                │     ├── wrappers/
+                │     ├── date/
+                │     │    ├── legacy/
+                │     │    ├── localdate/
+                │     │    ├── localtime/
+                │     │    ├── datetime/
+                │     │    ├── zoned/
+                │     │    ├── instant/
+                │     │    ├── formatting/
+                │     │    ├── operations/
+                │     │    └── bridge/
+                │     ├── resourcebundle/
+                │     ├── io/
+                │     ├── nio/
+                │     ├── serialization/
+                │     ├── collections/
+                │     │    ├── contract/
+                │     │    ├── complexity/
+                │     │    ├── list/
+                │     │    ├── iterator/
+                │     │    ├── set/
+                │     │    ├── map/
+                │     │    └── queue/
+                │     ├── optional/
+                │     ├── streams/
+                │     │    ├── intro/
+                │     │    ├── flatmap/
+                │     │    ├── matching/
+                │     │    ├── reduce/
+                │     │    ├── generating/
+                │     │    ├── collectors/
+                │     │    │    ├── summarizing/
+                │     │    │    └── groupingby/
+                │     │    └── parallel/
+                │     └── concurrency/
+                │          ├── atomic/
+                │          ├── locks/
+                │          ├── concurrentcollections/
+                │          ├── queues/
+                │          ├── executors/
+                │          └── completablefuture/
+                ├── generics/
+                │    ├── intro/
+                │    ├── wildcard/
+                │    ├── classes/
+                │    └── methods/
+                ├── innerclasses/
+                │    ├── intro/
+                │    ├── local/
+                │    ├── anonymous/
+                │    └── staticnested/      
+                ├── lambdas/
+                │    ├── behavior/        <- parametrizando comportamentos
+                │    ├── predicate/
+                │    ├── consumer/
+                │    └── function/
+                ├── methodreference/
+                │    ├── staticmethod/
+                │    ├── instancemethod/
+                │    └── constructor/
+                ├── threads/
+                │    ├── intro/
+                │    ├── states/
+                │    ├── priority/
+                │    ├── yieldjoin/
+                │    └── synchronization/
+                ├── patterns/
+                │   ├── builder/
+                │   ├── factory/
+                │   ├── singleton/
+                │   │   ├── eager/
+                │   │   ├── lazy/
+                │   │   └── enumeration/
+                │   └── dto/
 ```
 
 - A estrutura é atualizada conforme novos módulos são finalizados.
