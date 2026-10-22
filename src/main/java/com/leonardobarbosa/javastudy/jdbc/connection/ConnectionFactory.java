@@ -11,6 +11,7 @@ public class ConnectionFactory {
         String username = "root";
         String password = System.getenv("DB_PASSWORD");
 
+        // DriverManager estabelece a conexão com o banco usando a URL e as credenciais.
         return DriverManager.getConnection(url, username, password);
     }
 }

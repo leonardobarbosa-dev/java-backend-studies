@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+        <!-- Define a saída dos logs no console. -->
+        <Console name="Console" target="SYSTEM_OUT">
+
+            <!-- Define o formato das mensagens exibidas. -->
+            <PatternLayout
+                    pattern="%d{dd/MM/yyyy HH:mm:ss} %-5level [%t] %c{1}.%M:%L - %msg%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <!-- Define DEBUG como nível mínimo para o logger raiz. -->
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
