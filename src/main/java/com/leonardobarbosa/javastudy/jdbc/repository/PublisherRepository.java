@@ -33,4 +33,25 @@ public class PublisherRepository {
             log.error("Erro ao salvar publisher", e);
         }
     }
+
+    public static void delete(int id) {
+
+        // O id identifica o publisher que será excluído.
+        String sql = """
+                DELETE FROM anime_store.publisher
+                WHERE id = %d;
+                """.formatted(id);
+
+        // A conexão e o Statement são fechados automaticamente ao final do bloco.
+        try (Connection connection = ConnectionFactory.getConnection();
+             Statement statement = connection.createStatement()) {
+
+            // executeUpdate() executa o DELETE e retorna a quantidade de linhas afetadas.
+            int rowsAffected = statement.executeUpdate(sql);
+            log.info("Rows affected '{}'", rowsAffected);
+
+        } catch (SQLException e) {
+            log.error("Erro ao tentar deletar publisher", e);
+        }
+    }
 }
