@@ -6,8 +6,9 @@ import com.leonardobarbosa.javastudy.jdbc.service.PublisherService;
 
 public class PublisherRepositoryTest {
     public static void main(String[] args) {
-        Publisher publisher = Publisher.builder().name("Shogakukan").build();
+        Publisher publisherSave = Publisher.builder().name("Shogakukan").build();
+        Publisher publisherToUpdate = Publisher.builder().id(8).name("SHOGAKUKAN").build();
 
-        PublisherService.save(publisher);
+        PublisherService.update(publisherToUpdate);
     }
 }

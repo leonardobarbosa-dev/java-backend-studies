@@ -54,4 +54,26 @@ public class PublisherRepository {
             log.error("Erro ao tentar deletar publisher", e);
         }
     }
+
+    public static void update(Publisher publisher) {
+
+        // O id identifica o publisher que será alterado.
+        String sql = """
+                UPDATE anime_store.publisher
+                SET name='%s'
+                WHERE id = %d;
+                """.formatted(publisher.getName(), publisher.getId());
+
+        // A conexão e o Statement são fechados automaticamente ao final do bloco.
+        try (Connection connection = ConnectionFactory.getConnection();
+             Statement statement = connection.createStatement()) {
+
+            // executeUpdate() executa o UPDATE e retorna a quantidade de linhas afetadas.
+            int rowsAffected = statement.executeUpdate(sql);
+            log.info("Rows affected '{}'", rowsAffected);
+
+        } catch (SQLException e) {
+            log.error("Erro ao tentar atualizar publisher", e);
+        }
+    }
 }
