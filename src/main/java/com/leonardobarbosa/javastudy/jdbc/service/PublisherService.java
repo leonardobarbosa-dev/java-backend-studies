@@ -4,6 +4,7 @@ import com.leonardobarbosa.javastudy.jdbc.domain.Publisher;
 import com.leonardobarbosa.javastudy.jdbc.repository.PublisherRepository;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class PublisherService {
 
@@ -19,6 +20,10 @@ public class PublisherService {
     public static void update(Publisher publisher) {
         requireValidId(publisher.getId());
         PublisherRepository.update(publisher);
+    }
+
+    public static List<Publisher> findAll() {
+        return PublisherRepository.findAll();
     }
 
     // Metodo para evitar repetição de validação no código
