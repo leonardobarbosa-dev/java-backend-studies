@@ -29,6 +29,10 @@ public class PublisherService {
         return PublisherRepository.findByName(nameSearch);
     }
 
+    public static void showPublishersMetadata() {
+        PublisherRepository.showPublishersMetadata();
+    }
+
     // Metodo para evitar repetição de validação no código
     private static void requireValidId(Integer id) {
         if(id == null || id <= 0) {

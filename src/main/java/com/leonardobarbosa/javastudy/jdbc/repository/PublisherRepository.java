@@ -4,10 +4,7 @@ import com.leonardobarbosa.javastudy.jdbc.connection.ConnectionFactory;
 import com.leonardobarbosa.javastudy.jdbc.domain.Publisher;
 import lombok.extern.log4j.Log4j2;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -150,5 +147,38 @@ public class PublisherRepository {
 
         // Retorna a lista com os publishers encontrados
         return publishers;
+    }
+
+    public static void showPublishersMetadata() {
+
+        log.info("Buscando Metadados...");
+
+        String sql = """
+                SELECT *
+                FROM anime_store.publisher;
+                """;
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+
+            // Recupera informações sobre as colunas retornadas pela consulta
+            ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+
+            // Retorna a quantidade de colunas presentes no resultado
+            int columnCount = resultSetMetaData.getColumnCount();
+            log.info("Columns: {}", columnCount);
+
+            // A contagem das colunas no JDBC começa em 1
+            for (int i = 1; i <= columnCount; i++) {
+                log.info("Table name: {}", resultSetMetaData.getTableName(i));
+                log.info("Column name: {}", resultSetMetaData.getColumnName(i));
+                log.info("Column display size {}", resultSetMetaData.getColumnDisplaySize(i));
+                log.info("Column type name {}", resultSetMetaData.getColumnTypeName(i));
+            }
+
+        } catch (SQLException e) {
+            log.error("Erro ao buscar Metadados", e);
+        }
     }
 }

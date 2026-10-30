@@ -20,9 +20,10 @@ public class PublisherRepositoryTest {
 //            log.info(publisher);
 //        }
 
-        for (Publisher publisher : PublisherService.findByName("ko")) {
-            log.info("Publishers encontradas -> {}", publisher);
-        }
+//        for (Publisher publisher : PublisherService.findByName("ko")) {
+//            log.info("Publishers encontradas -> {}", publisher);
+//        }
 
+        PublisherService.showPublishersMetadata();
     }
 }
