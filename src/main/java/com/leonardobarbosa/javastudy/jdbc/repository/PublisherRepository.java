@@ -81,14 +81,53 @@ public class PublisherRepository {
     public static List<Publisher> findAll() {
 
         log.info("Buscando publishers...");
+        // Simplificando código
+         return findByName("");
+
+        // Lista que armazenará os publishers encontrados e será retornada pelo metodo
+//        List<Publisher> publishers = new ArrayList<>();
+//
+//        // Recupera os valores das colunas id e name do registro atual.
+//        String sql = """
+//                SELECT id, name
+//                FROM anime_store.publisher;
+//                """;
+//
+//        try (Connection connection = ConnectionFactory.getConnection();
+//             Statement statement = connection.createStatement();
+//             ResultSet resultSet = statement.executeQuery(sql)) {
+//
+//            // next() avança para a próxima linha e retorna true enquanto houver registros
+//            while (resultSet.next()) {
+//                int id = resultSet.getInt("id");
+//                String name = resultSet.getString("name");
+//
+//                // Cria um Publisher com os dados do registro atual e adiciona à lista
+//                Publisher publisher = Publisher.builder().id(id).name(name).build();
+//                publishers.add(publisher);
+//
+//            }
+//
+//        } catch (SQLException e) {
+//            log.error("Erro ao buscar publishers", e);
+//        }
+//
+//        // Retorna a lista com os publishers encontrados
+//        return publishers;
+    }
+
+    public static List<Publisher> findByName(String nameSearch) {
+
+        log.info("Buscando publishers pelo nome...");
         // Lista que armazenará os publishers encontrados e será retornada pelo metodo
         List<Publisher> publishers = new ArrayList<>();
 
-        // Recupera os valores das colunas id e name do registro atual.
+        // Busca publishers cujo nome contenha o texto informado.
         String sql = """
                 SELECT id, name
-                FROM anime_store.publisher;
-                """;
+                FROM anime_store.publisher
+                WHERE name LIKE '%%%s%%';
+                """.formatted(nameSearch);
 
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement();

@@ -16,10 +16,13 @@ public class PublisherRepositoryTest {
 
 //        PublisherService.update(publisherToUpdate);
 
-        for (Publisher publisher : PublisherService.findAll()) {
-            log.info(publisher);
-        }
+//        for (Publisher publisher : PublisherService.findAll()) {
+//            log.info(publisher);
+//        }
 
+        for (Publisher publisher : PublisherService.findByName("ko")) {
+            log.info("Publishers encontradas -> {}", publisher);
+        }
 
     }
 }

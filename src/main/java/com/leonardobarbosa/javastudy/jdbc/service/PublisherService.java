@@ -3,7 +3,6 @@ package com.leonardobarbosa.javastudy.jdbc.service;
 import com.leonardobarbosa.javastudy.jdbc.domain.Publisher;
 import com.leonardobarbosa.javastudy.jdbc.repository.PublisherRepository;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class PublisherService {
@@ -24,6 +23,10 @@ public class PublisherService {
 
     public static List<Publisher> findAll() {
         return PublisherRepository.findAll();
+    }
+
+    public static List<Publisher> findByName(String nameSearch) {
+        return PublisherRepository.findByName(nameSearch);
     }
 
     // Metodo para evitar repetição de validação no código
