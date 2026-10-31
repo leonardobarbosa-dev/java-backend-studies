@@ -33,6 +33,10 @@ public class PublisherService {
         PublisherRepository.showPublishersMetadata();
     }
 
+    public static void showDriverMetaData() {
+        PublisherRepository.showDriverMetaData();
+    }
+
     // Metodo para evitar repetição de validação no código
     private static void requireValidId(Integer id) {
         if(id == null || id <= 0) {

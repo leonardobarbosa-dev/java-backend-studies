@@ -77,7 +77,6 @@ public class PublisherRepository {
 
     public static List<Publisher> findAll() {
 
-        log.info("Buscando publishers...");
         // Simplificando código
          return findByName("");
 
@@ -179,6 +178,47 @@ public class PublisherRepository {
 
         } catch (SQLException e) {
             log.error("Erro ao buscar Metadados", e);
+        }
+    }
+
+    public static void showDriverMetaData() {
+
+        try (Connection connection = ConnectionFactory.getConnection()){
+
+            DatabaseMetaData metaData = connection.getMetaData();
+
+            // Permite navegar somente para a frente, registro por registro
+            if (metaData.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)){
+                log.info("Suporta: TYPE_FORWARD_ONLY");
+
+                // possibilita modificar registros diretamente pelo próprio ResultSet, em vez de executar um UPDATE separado
+                if (metaData.supportsResultSetConcurrency(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)) {
+                    log.info("e suporta: CONCUR_UPDATABLE");
+                }
+            }
+
+            // Permite navegar para frente e para trás, mas não reflete alterações feitas no banco enquanto o ResultSet está aberto
+            if (metaData.supportsResultSetType(ResultSet.TYPE_SCROLL_INSENSITIVE)) {
+                log.info("Suporta TYPE_SCROLL_INSENSITIVE");
+                 if (metaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+                     log.info("e suporta CONCUR_UPDATABLE");
+                 }
+            }
+
+           /*
+            Permite navegar para frente e para trás e pode refletir
+            alterações externas feitas no banco enquanto o
+            ResultSet está aberto, caso o driver ofereça esse suporte.
+            */
+            if (metaData.supportsResultSetType(ResultSet.TYPE_SCROLL_SENSITIVE)) {
+                log.info("Suporta TYPE_SCROLL_SENSITIVE");
+                if (metaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+                    log.info("e suporta CONCUR_UPDATABLE");
+                }
+            }
+
+        } catch (SQLException e) {
+            log.error("Erro ao consultar MetaDados do driver", e);
         }
     }
 }

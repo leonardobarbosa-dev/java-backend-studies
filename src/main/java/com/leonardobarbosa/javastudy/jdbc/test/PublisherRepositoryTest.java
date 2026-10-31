@@ -24,6 +24,8 @@ public class PublisherRepositoryTest {
 //            log.info("Publishers encontradas -> {}", publisher);
 //        }
 
-        PublisherService.showPublishersMetadata();
+//        PublisherService.showPublishersMetadata();
+
+        PublisherService.showDriverMetaData();
     }
 }
