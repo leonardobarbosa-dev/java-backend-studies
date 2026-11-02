@@ -221,4 +221,57 @@ public class PublisherRepository {
             log.error("Erro ao consultar MetaDados do driver", e);
         }
     }
+
+    public static void showTypeScrollWorking() {
+
+        String sql = """
+                SELECT id, name
+                FROM anime_store.publisher;
+                """;
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet resultSet = statement.executeQuery(sql)) {
+
+            // Cursor move para a primeira linha do resultado
+            log.info("First row? {}", resultSet.first());
+            log.info(Publisher.builder().id(resultSet.getInt("id")).name(resultSet.getString("name")).build());
+            log.info("------------------------------------------------------------------------------");
+
+            // Cursor move para a última linha do resultado
+            log.info("Last row? {}", resultSet.last());
+            log.info(Publisher.builder().id(resultSet.getInt("id")).name(resultSet.getString("name")).build());
+            log.info("------------------------------------------------------------------------------");
+
+            // Cursor aponta para a linha número 2
+            log.info("Absolute row? {}", resultSet.absolute(2));
+            log.info(Publisher.builder().id(resultSet.getInt("id")).name(resultSet.getString("name")).build());
+            log.info("------------------------------------------------------------------------------");
+
+            // Cursor move uma linha para trás em relação à posição atual
+            log.info("Relative row? {}", resultSet.relative(-1));
+            log.info(Publisher.builder().id(resultSet.getInt("id")).name(resultSet.getString("name")).build());
+            log.info("------------------------------------------------------------------------------");
+
+            // Verifica se o cursor está na última linha, sem movê-lo
+            log.info("Is last? {}", resultSet.isLast());
+            log.info(Publisher.builder().id(resultSet.getInt("id")).name(resultSet.getString("name")).build());
+            log.info("------------------------------------------------------------------------------");
+
+            // Move o cursor para a última linha e, em seguida, para depois dela
+            resultSet.last();
+            resultSet.next();
+
+            // Verifica se o cursor está posicionado após a última linha
+            log.info("Is after last? {}", resultSet.isAfterLast());
+
+            // Move o cursor para trás, percorrendo os registros até antes da primeira linha.
+            while (resultSet.previous()) {
+                 log.info(Publisher.builder().id(resultSet.getInt("id")).name(resultSet.getString("name")).build());
+             }
+
+        } catch (SQLException e) {
+            log.error("Erro ao buscar publishers", e);
+        }
+    }
 }

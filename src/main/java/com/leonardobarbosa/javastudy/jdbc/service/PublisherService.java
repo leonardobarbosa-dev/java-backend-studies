@@ -37,6 +37,10 @@ public class PublisherService {
         PublisherRepository.showDriverMetaData();
     }
 
+    public static void showTypeScrollWorking() {
+        PublisherRepository.showTypeScrollWorking();
+    }
+
     // Metodo para evitar repetição de validação no código
     private static void requireValidId(Integer id) {
         if(id == null || id <= 0) {

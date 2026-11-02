@@ -3,7 +3,6 @@ package com.leonardobarbosa.javastudy.jdbc.test;
 import lombok.extern.log4j.Log4j2;
 import com.leonardobarbosa.javastudy.jdbc.domain.Publisher;
 import com.leonardobarbosa.javastudy.jdbc.service.PublisherService;
-import java.util.concurrent.TimeUnit;
 
 @Log4j2
 public class PublisherRepositoryTest {
@@ -26,6 +25,8 @@ public class PublisherRepositoryTest {
 
 //        PublisherService.showPublishersMetadata();
 
-        PublisherService.showDriverMetaData();
+//        PublisherService.showDriverMetaData();
+
+        PublisherService.showTypeScrollWorking();
     }
 }
