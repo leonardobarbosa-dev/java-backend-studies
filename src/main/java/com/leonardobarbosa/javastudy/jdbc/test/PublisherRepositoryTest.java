@@ -35,8 +35,12 @@ public class PublisherRepositoryTest {
 
 //        PublisherService.showTypeScrollWorking();
 
-        List<Publisher> publishers = PublisherService.findByNameAndUpdateToLowerCase("sho");
-        log.info("Publisher atualizada -> {}", publishers);
+//        List<Publisher> publishers = PublisherService.findByNameAndUpdateToLowerCase("sho");
+//        log.info("Publisher atualizada -> {}", publishers);
 
+//        List<Publisher> insertWhenNotFound = PublisherService.findByNameAndInsertWhenNotFound("Panini Comics");
+//        log.info("Publisher -> {}", insertWhenNotFound);
+
+//        PublisherService.deleteByName("Panini Comics");
     }
 }

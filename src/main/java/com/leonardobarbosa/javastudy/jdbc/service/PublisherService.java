@@ -44,9 +44,18 @@ public class PublisherService {
     public static List<Publisher> findByNameAndUpdateToLowerCase(String nameSearch) {
         return PublisherRepository.findByNameAndUpdateToLowerCase(nameSearch);
     }
+
+    public static List<Publisher> findByNameAndInsertWhenNotFound(String nameSearch) {
+        return PublisherRepository.findByNameAndInsertWhenNotFound(nameSearch);
+    }
+
+    public static void deleteByName(String nameSearch) {
+        PublisherRepository.deleteByName(nameSearch);
+    }
+
     // Metodo para evitar repetição de validação no código
     private static void requireValidId(Integer id) {
-        if(id == null || id <= 0) {
+        if (id == null || id <= 0) {
             throw new IllegalArgumentException("Valor do id inválido!");
         }
 

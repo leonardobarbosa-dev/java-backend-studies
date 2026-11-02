@@ -78,7 +78,7 @@ public class PublisherRepository {
     public static List<Publisher> findAll() {
 
         // Simplificando código
-         return findByName("");
+        return findByName("");
 
         // Lista que armazenará os publishers encontrados e será retornada pelo metodo
 //        List<Publisher> publishers = new ArrayList<>();
@@ -183,12 +183,12 @@ public class PublisherRepository {
 
     public static void showDriverMetaData() {
 
-        try (Connection connection = ConnectionFactory.getConnection()){
+        try (Connection connection = ConnectionFactory.getConnection()) {
 
             DatabaseMetaData metaData = connection.getMetaData();
 
             // Permite navegar somente para a frente, registro por registro
-            if (metaData.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)){
+            if (metaData.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)) {
                 log.info("Suporta: TYPE_FORWARD_ONLY");
 
                 // possibilita modificar registros diretamente pelo próprio ResultSet, em vez de executar um UPDATE separado
@@ -200,9 +200,9 @@ public class PublisherRepository {
             // Permite navegar para frente e para trás, mas não reflete alterações feitas no banco enquanto o ResultSet está aberto
             if (metaData.supportsResultSetType(ResultSet.TYPE_SCROLL_INSENSITIVE)) {
                 log.info("Suporta TYPE_SCROLL_INSENSITIVE");
-                 if (metaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
-                     log.info("e suporta CONCUR_UPDATABLE");
-                 }
+                if (metaData.supportsResultSetConcurrency(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+                    log.info("e suporta CONCUR_UPDATABLE");
+                }
             }
 
            /*
@@ -267,8 +267,8 @@ public class PublisherRepository {
 
             // Move o cursor para trás, percorrendo os registros até antes da primeira linha.
             while (resultSet.previous()) {
-                 log.info(Publisher.builder().id(resultSet.getInt("id")).name(resultSet.getString("name")).build());
-             }
+                log.info(Publisher.builder().id(resultSet.getInt("id")).name(resultSet.getString("name")).build());
+            }
 
         } catch (SQLException e) {
             log.error("Erro ao buscar publishers", e);
@@ -318,5 +318,97 @@ public class PublisherRepository {
 
         // Retorna a lista com os publishers encontrados
         return publishers;
+    }
+
+    public static List<Publisher> findByNameAndInsertWhenNotFound(String nameSearch) {
+
+        log.info("Buscando publishers...");
+        // Lista que armazenará os publishers encontrados e será retornada pelo metodo
+        List<Publisher> publishers = new ArrayList<>();
+
+        // Busca publishers cujo nome contenha o texto informado.
+        String sql = """
+                SELECT id, name
+                FROM anime_store.publisher
+                WHERE name = '%s';
+                """.formatted(nameSearch);
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet resultSet = statement.executeQuery(sql)) {
+
+            // Retorna a lista com nome caso encontrado
+            if (resultSet.next()) {
+                log.info("Publisher encontrada");
+                Publisher publisher = Publisher
+                        .builder()
+                        .id(resultSet.getInt("id"))
+                        .name(resultSet.getString("name"))
+                        .build();
+                publishers.add(publisher);
+                return publishers;
+            }
+
+            log.info("Inserindo nova publisher...");
+
+            // move para uma linha temporária e efine o valor da coluna name na nova linha
+            resultSet.moveToInsertRow();
+            resultSet.updateString("name", nameSearch);
+            // Insere a nova linha no banco de dados, mas sua inclusão no ResultSet atual não é garantida pela especificação JDBC
+            resultSet.insertRow();
+
+
+            // Volta o cursor para a posição anterior à primeira linha
+            resultSet.beforeFirst();
+            // Avança para a primeira linha disponível no ResultSet
+            resultSet.next();
+            // Cria um Publisher com os dados do registro e adiciona à lista.
+            Publisher publisher = Publisher.builder().id(resultSet.getInt("id")).name(resultSet.getString("name")).build();
+            publishers.add(publisher);
+
+        } catch (SQLException e) {
+            log.error("Erro ao buscar publishers", e);
+        }
+
+
+        // Retorna a lista com o publisher encontrado ou inserido
+        return publishers;
+    }
+
+    public static void deleteByName(String nameSearch) {
+
+        // Consulta os publishers pelo nome exato
+        String sql = """
+            SELECT id, name
+            FROM anime_store.publisher
+            WHERE name = '%s';
+            """.formatted(nameSearch);
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             Statement statement = connection.createStatement(
+                     ResultSet.TYPE_SCROLL_INSENSITIVE,
+                     ResultSet.CONCUR_UPDATABLE
+             );
+             ResultSet resultSet = statement.executeQuery(sql)) {
+
+            // Indica se algum publisher foi encontrado
+            boolean found = false;
+
+            while (resultSet.next()) {
+                found = true;
+
+                log.info("Deletando Publisher -> {}", resultSet.getString("name"));
+
+                // Remove a linha atual do ResultSet e do banco de dados
+                resultSet.deleteRow();
+            }
+
+            if (!found) {
+                log.info("Nenhum publisher encontrado com o nome: {}", nameSearch);
+            }
+
+        } catch (SQLException e) {
+            log.error("Erro ao deletar publisher", e);
+        }
     }
 }
