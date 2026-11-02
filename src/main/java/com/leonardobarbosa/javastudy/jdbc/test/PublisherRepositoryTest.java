@@ -4,6 +4,8 @@ import lombok.extern.log4j.Log4j2;
 import com.leonardobarbosa.javastudy.jdbc.domain.Publisher;
 import com.leonardobarbosa.javastudy.jdbc.service.PublisherService;
 
+import java.util.List;
+
 @Log4j2
 public class PublisherRepositoryTest {
     public static void main(String[] args) {
@@ -11,7 +13,11 @@ public class PublisherRepositoryTest {
         Publisher publisher1 = Publisher.builder().name("Shueisha").build();
         Publisher publisher2 = Publisher.builder().name("Kodansha").build();
         Publisher publisher3 = Publisher.builder().name("Shogakukan").build();
-        Publisher publisherToUpdate = Publisher.builder().id(11).name("SHOGAKUKAN").build();
+        Publisher publisherToUpdate = Publisher.builder().id(3).name("SHOGAKUKAN").build();
+
+//        PublisherService.save(publisher1);
+//        PublisherService.save(publisher2);
+//        PublisherService.save(publisher3);
 
 //        PublisherService.update(publisherToUpdate);
 
@@ -27,6 +33,10 @@ public class PublisherRepositoryTest {
 
 //        PublisherService.showDriverMetaData();
 
-        PublisherService.showTypeScrollWorking();
+//        PublisherService.showTypeScrollWorking();
+
+        List<Publisher> publishers = PublisherService.findByNameAndUpdateToLowerCase("sho");
+        log.info("Publisher atualizada -> {}", publishers);
+
     }
 }

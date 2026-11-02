@@ -41,6 +41,9 @@ public class PublisherService {
         PublisherRepository.showTypeScrollWorking();
     }
 
+    public static List<Publisher> findByNameAndUpdateToLowerCase(String nameSearch) {
+        return PublisherRepository.findByNameAndUpdateToLowerCase(nameSearch);
+    }
     // Metodo para evitar repetição de validação no código
     private static void requireValidId(Integer id) {
         if(id == null || id <= 0) {

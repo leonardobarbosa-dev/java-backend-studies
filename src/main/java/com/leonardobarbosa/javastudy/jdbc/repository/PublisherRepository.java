@@ -274,4 +274,49 @@ public class PublisherRepository {
             log.error("Erro ao buscar publishers", e);
         }
     }
+
+    public static List<Publisher> findByNameAndUpdateToLowerCase(String nameSearch) {
+
+        log.info("Buscando publishers pelo nome...");
+        // Lista que armazenará os publishers encontrados e será retornada pelo metodo
+        List<Publisher> publishers = new ArrayList<>();
+
+        // Busca publishers cujo nome contenha o texto informado.
+        String sql = """
+                SELECT id, name
+                FROM anime_store.publisher
+                WHERE name LIKE '%%%s%%';
+                """.formatted(nameSearch);
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet resultSet = statement.executeQuery(sql)) {
+
+            // next() avança para a próxima linha e retorna true enquanto houver registros
+            while (resultSet.next()) {
+
+                // Atualiza a coluna name com seu valor convertido para letras minúsculas
+                // updateString() sozinho não persiste a alteração no banco. É necessário chamar updateRow()
+                resultSet.updateString("name", resultSet.getString("name").toLowerCase());
+
+                // Persiste no banco de dados as alterações realizadas na linha atual do ResultSet.
+                resultSet.updateRow();
+
+                // Cria um Publisher com os dados do registro atual e adiciona à lista
+                Publisher publisher = Publisher
+                        .builder()
+                        .id(resultSet.getInt("id"))
+                        .name(resultSet.getString("name"))
+                        .build();
+                publishers.add(publisher);
+
+            }
+
+        } catch (SQLException e) {
+            log.error("Erro ao buscar publishers e atualizar", e);
+        }
+
+        // Retorna a lista com os publishers encontrados
+        return publishers;
+    }
 }
