@@ -57,6 +57,11 @@ public class PublisherService {
         return PublisherRepository.findByNamePreparedStatement(nameSearch);
     }
 
+    public static void updatePreparedStatement(Publisher publisher) {
+        requireValidId(publisher.getId());
+        PublisherRepository.updatePreparedStatement(publisher);
+    }
+
     // Metodo para evitar repetição de validação no código
     private static void requireValidId(Integer id) {
         if (id == null || id <= 0) {

@@ -418,15 +418,8 @@ public class PublisherRepository {
         // Lista que armazenará os publishers encontrados e será retornada pelo metodo
         List<Publisher> publishers = new ArrayList<>();
 
-        // Busca publishers cujo nome contenha o texto informado.
-        String sql = """
-                SELECT id, name
-                FROM anime_store.publisher
-                WHERE name LIKE ?;
-                """;
-
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = createPreparedStatement(connection, sql, nameSearch);
+             PreparedStatement statement = createPreparedStatement(connection, nameSearch);
              ResultSet resultSet = statement.executeQuery()) {
 
             // next() avança para a próxima linha e retorna true enquanto houver registros
@@ -437,7 +430,6 @@ public class PublisherRepository {
                 // Cria um Publisher com os dados do registro atual e adiciona à lista
                 Publisher publisher = Publisher.builder().id(id).name(name).build();
                 publishers.add(publisher);
-
             }
 
         } catch (SQLException e) {
@@ -451,11 +443,49 @@ public class PublisherRepository {
     // Cria um PreparedStatement e define o valor do parâmetro da consulta
     // O metodo auxiliar permite configurar o parâmetro antes de executar a consulta,
     // evitando a necessidade de um try aninhado no metodo de busca. (
-    private static PreparedStatement createPreparedStatement(Connection connection, String sql, String name) throws SQLException {
+    private static PreparedStatement createPreparedStatement(Connection connection, String name) throws SQLException {
+        // Busca publishers cujo nome contenha o texto informado.
+        String sql = """
+                SELECT id, name
+                FROM anime_store.publisher
+                WHERE name LIKE ?;
+                """;
+
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
         // caracteres curinga devem ser concatenados ao valor do parâmetro que será injetado
         preparedStatement.setString(1, "%" + name + "%");
+        return preparedStatement;
+    }
+
+    public static void updatePreparedStatement(Publisher publisher) {
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement statement = createPreparedStatementUpdate(connection, publisher)) {
+
+            // executeUpdate() executa o UPDATE e retorna a quantidade de linhas afetadas.
+            int rowsAffected = statement.executeUpdate();
+            log.info("Rows affected '{}'", rowsAffected);
+
+        } catch (SQLException e) {
+            log.error("Erro ao tentar atualizar publisher", e);
+        }
+    }
+
+    private static PreparedStatement createPreparedStatementUpdate(Connection connection, Publisher publisher) throws SQLException {
+        // O id identifica o publisher que será alterado.
+        String sql = """
+                UPDATE anime_store.publisher
+                SET name = ?
+                WHERE id = ?;
+                """;
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        // Define o novo nome e o id do publisher nos parâmetros da consulta
+        preparedStatement.setString(1, publisher.getName());
+        preparedStatement.setInt(2, publisher.getId());
+
         return preparedStatement;
     }
 }
