@@ -488,4 +488,47 @@ public class PublisherRepository {
 
         return preparedStatement;
     }
+
+    public static List<Publisher> findByNameCallableStatement(String nameSearch) {
+
+        log.info("Buscando publishers pelo nome com Callable Statement...");
+        // Lista que armazenará os publishers encontrados e será retornada pelo metodo
+        List<Publisher> publishers = new ArrayList<>();
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             CallableStatement statement = createCallableStatement(connection, nameSearch);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            // next() avança para a próxima linha e retorna true enquanto houver registros
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+
+                // Cria um Publisher com os dados do registro atual e adiciona à lista
+                Publisher publisher = Publisher.builder().id(id).name(name).build();
+                publishers.add(publisher);
+            }
+
+        } catch (SQLException e) {
+            log.error("Erro ao buscar publishers", e);
+        }
+
+        // Retorna a lista com os publishers encontrados
+        return publishers;
+    }
+
+    private static CallableStatement createCallableStatement(Connection connection, String name) throws SQLException {
+        // Chama a Stored Procedure criada no banco de dados para realizar a busca
+        String sql = """
+                { CALL anime_store.find_publisher_by_name(?) }
+                """;
+
+        // Callable Statement -> utilizado quando é preciso fazer chamada para funções ou stored procedures
+
+        CallableStatement callableStatement = connection.prepareCall(sql);
+
+        // Define o parâmetro de entrada da procedure com os curingas da busca
+        callableStatement.setString(1, "%" + name + "%");
+        return callableStatement;
+    }
 }

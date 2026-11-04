@@ -47,6 +47,9 @@ public class PublisherRepositoryTest {
 //        List<Publisher> byNamePreparedStatement = PublisherService.findByNamePreparedStatement("Shu");
 //        log.info("Find by name with prepared statement: {}", byNamePreparedStatement);
 
-        PublisherService.updatePreparedStatement(publisherToUpdate);
+//        PublisherService.updatePreparedStatement(publisherToUpdate);
+
+        List<Publisher> byNameCallableStatement = PublisherService.findByNameCallableStatement("Pan");
+        log.info("Find by name with callable statement: {}", byNameCallableStatement);
     }
 }
