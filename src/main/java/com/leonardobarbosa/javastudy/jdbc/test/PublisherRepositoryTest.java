@@ -42,5 +42,9 @@ public class PublisherRepositoryTest {
 //        log.info("Publisher -> {}", insertWhenNotFound);
 
 //        PublisherService.deleteByName("Panini Comics");
+
+
+        List<Publisher> byNamePreparedStatement = PublisherService.findByNamePreparedStatement("Shu");
+        log.info("Find by name with prepared statement: {}", byNamePreparedStatement);
     }
 }

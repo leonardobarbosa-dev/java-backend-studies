@@ -411,4 +411,51 @@ public class PublisherRepository {
             log.error("Erro ao deletar publisher", e);
         }
     }
+
+    public static List<Publisher> findByNamePreparedStatement(String nameSearch) {
+
+        log.info("Buscando publishers pelo nome com Prepared Statement...");
+        // Lista que armazenará os publishers encontrados e será retornada pelo metodo
+        List<Publisher> publishers = new ArrayList<>();
+
+        // Busca publishers cujo nome contenha o texto informado.
+        String sql = """
+                SELECT id, name
+                FROM anime_store.publisher
+                WHERE name LIKE ?;
+                """;
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement statement = createPreparedStatement(connection, sql, nameSearch);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            // next() avança para a próxima linha e retorna true enquanto houver registros
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+
+                // Cria um Publisher com os dados do registro atual e adiciona à lista
+                Publisher publisher = Publisher.builder().id(id).name(name).build();
+                publishers.add(publisher);
+
+            }
+
+        } catch (SQLException e) {
+            log.error("Erro ao buscar publishers", e);
+        }
+
+        // Retorna a lista com os publishers encontrados
+        return publishers;
+    }
+
+    // Cria um PreparedStatement e define o valor do parâmetro da consulta
+    // O metodo auxiliar permite configurar o parâmetro antes de executar a consulta,
+    // evitando a necessidade de um try aninhado no metodo de busca. (
+    private static PreparedStatement createPreparedStatement(Connection connection, String sql, String name) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        // caracteres curinga devem ser concatenados ao valor do parâmetro que será injetado
+        preparedStatement.setString(1, "%" + name + "%");
+        return preparedStatement;
+    }
 }

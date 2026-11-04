@@ -53,6 +53,10 @@ public class PublisherService {
         PublisherRepository.deleteByName(nameSearch);
     }
 
+    public static List<Publisher> findByNamePreparedStatement(String nameSearch) {
+        return PublisherRepository.findByNamePreparedStatement(nameSearch);
+    }
+
     // Metodo para evitar repetição de validação no código
     private static void requireValidId(Integer id) {
         if (id == null || id <= 0) {
