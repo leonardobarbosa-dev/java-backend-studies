@@ -10,7 +10,12 @@ import java.util.List;
 public class PublisherRepositoryRowSetTest {
     public static void main(String[] args) {
 
-        List<Publisher> byNameRowSet = PublisherServiceRowSet.findByNameRowSet("Pani");
+        Publisher publisherToUpdate = Publisher.builder().id(3).name("SHOGAKUKAN").build();
+
+        PublisherServiceRowSet.updateRowSet(publisherToUpdate);
+        log.info("-------------------");
+
+        List<Publisher> byNameRowSet = PublisherServiceRowSet.findByNameRowSet("");
         log.info("Publishers: {}", byNameRowSet);
     }
 }

@@ -10,4 +10,8 @@ public class PublisherServiceRowSet {
     public static List<Publisher> findByNameRowSet(String nameSearch) {
         return PublisherRepositoryRowSet.findByNameRowSet(nameSearch);
     }
+
+    public static void updateRowSet(Publisher publisher) {
+        PublisherRepositoryRowSet.updateRowSet(publisher);
+    }
 }
