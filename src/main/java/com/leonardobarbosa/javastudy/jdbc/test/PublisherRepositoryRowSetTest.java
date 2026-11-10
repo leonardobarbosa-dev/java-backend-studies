@@ -10,12 +10,12 @@ import java.util.List;
 public class PublisherRepositoryRowSetTest {
     public static void main(String[] args) {
 
-        Publisher publisherToUpdate = Publisher.builder().id(3).name("SHOGAKUKAN").build();
+        Publisher publisherToUpdate = Publisher.builder().id(3).name("Shogakukan").build();
 
-        PublisherServiceRowSet.updateRowSet(publisherToUpdate);
-        log.info("-------------------");
-
-        List<Publisher> byNameRowSet = PublisherServiceRowSet.findByNameRowSet("");
-        log.info("Publishers: {}", byNameRowSet);
+        PublisherServiceRowSet.updateCachedRowSet(publisherToUpdate);
+//        log.info("-------------------");
+//
+//        List<Publisher> byNameRowSet = PublisherServiceRowSet.findByNameRowSet("");
+//        log.info("Publishers: {}", byNameRowSet);
     }
 }

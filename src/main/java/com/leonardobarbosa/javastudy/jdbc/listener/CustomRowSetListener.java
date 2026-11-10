@@ -13,7 +13,7 @@ public class CustomRowSetListener implements RowSetListener {
     // Chamado quando o conteúdo do RowSet é alterado, como após a execução de execute()
     @Override
     public void rowSetChanged(RowSetEvent event) {
-        log.info("Comand execute triggered");
+        log.info("Command execute triggered");
     }
 
     // Chamado quando uma linha do RowSet é inserida, atualizada ou excluída

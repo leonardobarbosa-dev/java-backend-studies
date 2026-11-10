@@ -5,7 +5,9 @@ import com.leonardobarbosa.javastudy.jdbc.domain.Publisher;
 import com.leonardobarbosa.javastudy.jdbc.listener.CustomRowSetListener;
 import lombok.extern.log4j.Log4j2;
 
+import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.JdbcRowSet;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +76,45 @@ public class PublisherRepositoryRowSet {
 
             // Persiste a alteração da linha atual no banco de dados
             jdbcRowSet.updateRow();
+
+
+            log.info("Publisher atualizado:  id={} - name={}", publisher.getId(), publisher.getName());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateCachedRowSet(Publisher publisher) {
+
+        String sql = """
+                SELECT id, name
+                FROM publisher
+                WHERE id = ?;
+                """;
+
+        try(CachedRowSet cachedRowSet = ConnectionFactory.getConnectionCachedRowSet();
+        Connection connection = ConnectionFactory.getConnection()) {
+
+            connection.setAutoCommit(false);
+
+            cachedRowSet.setCommand(sql);
+            cachedRowSet.setInt(1, publisher.getId());
+
+            // Executa a consulta utilizando a conexão fornecida para carregar os dados no cache
+            cachedRowSet.execute(connection);
+
+            // Encerra o metodo caso nenhum registro seja encontrado
+            if (!cachedRowSet.next()) return;
+
+            // Atualiza o valor da coluna name no cache do CachedRowSet
+            cachedRowSet.updateString("name", publisher.getName());
+
+            // Registra a alteração na linha atual do CachedRowSet
+            cachedRowSet.updateRow();
+
+            // Sincroniza as alterações realizadas no cache com o banco utilizando a conexão fornecida
+            cachedRowSet.acceptChanges(connection);
 
             log.info("Publisher atualizado:  id={} - name={}", publisher.getId(), publisher.getName());
 

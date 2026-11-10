@@ -14,4 +14,8 @@ public class PublisherServiceRowSet {
     public static void updateRowSet(Publisher publisher) {
         PublisherRepositoryRowSet.updateRowSet(publisher);
     }
+
+    public static void updateCachedRowSet(Publisher publisher) {
+        PublisherRepositoryRowSet.updateCachedRowSet(publisher);
+    }
 }
