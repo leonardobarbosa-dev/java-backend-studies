@@ -379,10 +379,10 @@ public class PublisherRepository {
 
         // Consulta os publishers pelo nome exato
         String sql = """
-            SELECT id, name
-            FROM anime_store.publisher
-            WHERE name = '%s';
-            """.formatted(nameSearch);
+                SELECT id, name
+                FROM anime_store.publisher
+                WHERE name = '%s';
+                """.formatted(nameSearch);
 
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement(
@@ -530,5 +530,69 @@ public class PublisherRepository {
         // Define o parâmetro de entrada da procedure com os curingas da busca
         callableStatement.setString(1, "%" + name + "%");
         return callableStatement;
+    }
+
+    public static void saveTransaction(List<Publisher> publishers) {
+
+        try (Connection connection = ConnectionFactory.getConnection()) {
+
+            // Desativa a confirmação automática para controlar a transação
+            connection.setAutoCommit(false);
+
+            try {
+
+                prepareStatementSaveTransaction(connection, publishers);
+
+                // Confirma todas as inserções caso nenhuma falha tenha ocorrido
+                connection.commit();
+            } catch (SQLException e) {
+                connection.rollback();
+                log.error("Falha ao salvar publishers, transação desfeita. ", e);
+            }
+        } catch (SQLException e) {
+
+            log.error("Erro ao tentar salvar publisher", e);
+        }
+    }
+
+    private static void prepareStatementSaveTransaction(Connection connection, List<Publisher> publishers) throws SQLException {
+
+        String sql = """
+                INSERT INTO publisher
+                (name)
+                VALUES(?);
+                """;
+
+        String sqlCheck = """
+                SELECT COUNT(*)
+                FROM publisher
+                WHERE name = ?;
+                """;
+
+        for (Publisher publisher : publishers) {
+
+            // Verifica se o publisher já existe
+            try (PreparedStatement checkStatement = connection.prepareStatement(sqlCheck)) {
+
+                checkStatement.setString(1, publisher.getName());
+
+                // Try aninhado para o ResultSet
+                try (ResultSet resultSet = checkStatement.executeQuery()) {
+                    resultSet.next();
+
+                    if (resultSet.getInt(1) > 0)
+                        throw new SQLException("Publisher já cadastrado: " + publisher.getName());
+                }
+            }
+
+            // INSERT, caso não exista
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+                log.info("Salvando publisher: {}", publisher.getName());
+
+                preparedStatement.setString(1, publisher.getName());
+                preparedStatement.executeUpdate();
+            }
+        }
     }
 }

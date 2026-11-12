@@ -66,6 +66,10 @@ public class PublisherService {
         return PublisherRepository.findByNameCallableStatement(nameSearch);
     }
 
+    public static void saveTransaction(List<Publisher> publishers) {
+        PublisherRepository.saveTransaction(publishers);
+    }
+
     // Metodo para evitar repetição de validação no código
     private static void requireValidId(Integer id) {
         if (id == null || id <= 0) {

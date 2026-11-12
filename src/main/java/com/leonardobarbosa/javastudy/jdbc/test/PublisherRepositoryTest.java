@@ -49,7 +49,9 @@ public class PublisherRepositoryTest {
 
 //        PublisherService.updatePreparedStatement(publisherToUpdate);
 
-        List<Publisher> byNameCallableStatement = PublisherService.findByNameCallableStatement("Pan");
-        log.info("Find by name with callable statement: {}", byNameCallableStatement);
+//        List<Publisher> byNameCallableStatement = PublisherService.findByNameCallableStatement("Pan");
+//        log.info("Find by name with callable statement: {}", byNameCallableStatement);
+
+        PublisherService.saveTransaction(List.of(publisher1, publisher2, publisher3));
     }
 }
