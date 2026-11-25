@@ -17,12 +17,12 @@ public class PublisherRepository {
 
     public static List<Publisher> findByName(String nameSearch) {
 
-        log.info("Buscando \"{}\"...", nameSearch);
+        System.out.println("Buscando pelo nome: " + nameSearch);
         // Lista que armazenará os publishers encontrados e será retornada pelo metodo
         List<Publisher> publishers = new ArrayList<>();
 
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = createPreparedStatement(connection, nameSearch);
+             PreparedStatement statement = createPreparedStatementFindByName(connection, nameSearch);
              ResultSet resultSet = statement.executeQuery()) {
 
             // next() avança para a próxima linha e retorna true enquanto houver registros
@@ -43,7 +43,7 @@ public class PublisherRepository {
         return publishers;
     }
 
-    private static PreparedStatement createPreparedStatement(Connection connection, String name) throws SQLException {
+    private static PreparedStatement createPreparedStatementFindByName(Connection connection, String name) throws SQLException {
         // Busca publishers cujo nome contenha o texto informado.
         String sql = """
                 SELECT id, name
@@ -55,6 +55,35 @@ public class PublisherRepository {
 
         // caracteres curinga devem ser concatenados ao valor do parâmetro que será injetado
         preparedStatement.setString(1, "%" + name + "%");
+        return preparedStatement;
+    }
+
+    public static boolean delete(int id) {
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement preparedStatement = createPreparedStatementDelete(connection, id)) {
+
+            // executeUpdate() executa o DELETE e retorna a quantidade de linhas afetadas.
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            log.error("Erro ao tentar deletar publisher ", e );
+        }
+        return false;
+    }
+
+    private static PreparedStatement createPreparedStatementDelete(Connection connection, Integer id) throws SQLException {
+        // O id identifica o publisher que será excluído.
+        String sql = """
+                DELETE FROM anime_store.publisher
+                WHERE id = ?;
+                """;
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        preparedStatement.setInt(1, id);
         return preparedStatement;
     }
 }

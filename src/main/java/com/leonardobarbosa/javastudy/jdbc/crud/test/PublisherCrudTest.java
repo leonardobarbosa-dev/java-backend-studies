@@ -29,6 +29,7 @@ public class PublisherCrudTest {
 
         System.out.println("Digite o número da operação desejada:");
         System.out.println("1. Busca por nome ");
+        System.out.println("2. Deletar ");
         System.out.println("0. Sair");
     }
 }

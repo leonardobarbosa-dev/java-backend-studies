@@ -18,6 +18,10 @@ public class PublisherService {
                 findByName(scanner);
                 break;
 
+            case 2:
+                delete(scanner);
+                break;
+
             default:
                 throw new IllegalArgumentException("Opção inválida!");
         }
@@ -37,6 +41,30 @@ public class PublisherService {
 
         for (Publisher publisher: byName) {
             System.out.printf("[%d] - %s%n", publisher.getId(), publisher.getName());
+        }
+    }
+
+    private static void delete(Scanner scanner) {
+
+        System.out.println("Digite o id do publisher para deletar");
+        int deleteID = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Tem certeza que deseja deletar o id: " + deleteID);
+        System.out.println("y/n");
+        String choice = scanner.nextLine();
+
+        if ("y".equalsIgnoreCase(choice)) {
+
+            boolean deleted = PublisherRepository.delete(deleteID);
+
+            if (deleted) {
+                System.out.println("Publisher deletado com sucesso");
+            } else {
+                System.out.println("Nenhum publisher encontrado com o ID informado");
+            }
+
+        } else {
+            System.out.println("Operação cancelada");
         }
     }
 
